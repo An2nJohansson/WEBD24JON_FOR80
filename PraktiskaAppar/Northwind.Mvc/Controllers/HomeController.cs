@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace Northwind.Mvc.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -64,7 +64,7 @@ namespace Northwind.Mvc.Controllers
             return View(model); // show the model bound thing
         }
 
-        [Authorize(Roles ="Admin")]
+        //[Authorize(Roles ="Admin")]
         public IActionResult Privacy()
         {
             return View();
@@ -74,6 +74,22 @@ namespace Northwind.Mvc.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult CategoryDetail(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return BadRequest("You must pass a product ID in the route, " +
+                    "for example, /Home/ProductDetail/21");
+            }
+            Category? model = db.Categories.SingleOrDefault(p => p.CategoryId == id);
+            if (model is null)
+            {
+                return NotFound($"ProductId{id} not found");
+            }
+
+            return View(model);
         }
     }
 }
