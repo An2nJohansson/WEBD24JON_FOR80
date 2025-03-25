@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization; //för att använda Authorize attributet (filters)
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Northwind.EntityModels;
 using Northwind.Mvc.Models;
 using System.Diagnostics;
@@ -80,13 +81,16 @@ namespace Northwind.Mvc.Controllers
         {
             if (!id.HasValue)
             {
-                return BadRequest("You must pass a product ID in the route, " +
-                    "for example, /Home/ProductDetail/21");
+                return BadRequest("You must pass a category ID in the route, " +
+                    "for example, /Home/CategoryDetail/2");
             }
-            Category? model = db.Categories.SingleOrDefault(p => p.CategoryId == id);
+            
+            Category? model = db.Categories
+                .Include(c => c.Products)
+                .SingleOrDefault(p => p.CategoryId == id);
             if (model is null)
             {
-                return NotFound($"ProductId{id} not found");
+                return NotFound($"CategoryId{id} not found");
             }
 
             return View(model);

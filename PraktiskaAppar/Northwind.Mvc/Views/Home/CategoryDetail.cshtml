@@ -6,3 +6,13 @@
 
 <dt>Category Id</dt>
 <dd>@Model.CategoryId</dd>
+<dd>@Model.CategoryName</dd>
+<dd>@Model.Description</dd>
+
+<dd>
+    @foreach (var product in Model.Products)
+    {
+        <li>@product.ProductName</li>
+    }
+</dd>
+
