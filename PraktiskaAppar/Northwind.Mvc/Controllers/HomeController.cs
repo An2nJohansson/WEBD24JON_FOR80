@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization; //för att använda Authorize-attributet (filters)
 using Microsoft.AspNetCore.Mvc;
 using Northwind.EntityModels;
 using Northwind.Mvc.Models;
@@ -5,6 +6,7 @@ using System.Diagnostics;
 
 namespace Northwind.Mvc.Controllers
 {
+    //[Authorize] - för hela sidan
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -64,6 +66,8 @@ namespace Northwind.Mvc.Controllers
             return View(thing); //en sida som visar det användaren skickade
         }
 
+
+        [Authorize(Roles ="Admin")]
         public IActionResult Privacy()
         {
             return View();
