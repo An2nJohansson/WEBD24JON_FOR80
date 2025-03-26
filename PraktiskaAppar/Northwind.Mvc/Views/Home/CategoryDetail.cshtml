@@ -3,16 +3,26 @@
     ViewData["Title"] = "Category Detail - " + Model.CategoryId;
 }
 <h2>Category details</h2>
+<hr/>
+<div>
+    <dl class="dl-horizontal">
+        <dt>Category Id</dt>
+        <dd>@Model.CategoryId</dd>
 
-<dt>Category Id</dt>
-<dd>@Model.CategoryId</dd>
-<dd>@Model.CategoryName</dd>
-<dd>@Model.Description</dd>
+        <dt>Category Name</dt>
+        <dd>@Model.CategoryName</dd>
 
-<dd>
-    @foreach (var product in Model.Products)
-    {
-        <li>@product.ProductName</li>
-    }
-</dd>
+        <dt>Category Description</dt>
+        <dd>@Model.Description</dd>
 
+        <dt>Category Products</dt>
+        <dd>
+            @foreach (var product in Model.Products)
+            {
+                <ul class="list-group"> 
+                    <li class ="list-group-item mt-2">@product.ProductName</li>
+                </ul>
+            }
+        </dd>
+    </dl>
+</div>
