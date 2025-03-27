@@ -2,27 +2,39 @@
 @{
     ViewData["Title"] = "Category Detail - " + Model.CategoryId;
 }
-<h2>Category details</h2>
-<hr/>
-<div>
-    <dl class="dl-horizontal">
-        <dt>Category Id</dt>
-        <dd>@Model.CategoryId</dd>
 
-        <dt>Category Name</dt>
-        <dd>@Model.CategoryName</dd>
+<div class="c-detail d-flex justify-content-between">
+    
+    <div>
+        <h2>Category details</h2>
+        <hr />
+        <dl class="dl-horizontal one">
+            <dt>Category Id</dt>
+            <dd>@Model.CategoryId</dd>
 
-        <dt>Category Description</dt>
-        <dd>@Model.Description</dd>
+            <dt>Category Name</dt>
+            <dd>@Model.CategoryName</dd>
 
-        <dt>Category Products</dt>
-        <dd>
-            @foreach (var product in Model.Products)
-            {
-                <ul class="list-group cprod"> 
-                    <li class ="list-group-item cprod-sup mt-2">@product.ProductName Produced by: @product.Supplier.CompanyName</li>
-                </ul>
-            }
-        </dd>
-    </dl>
+            <dt>Category Description</dt>
+            <dd>@Model.Description</dd>
+
+            <div class="c-pic">
+                <dt style="margin-bottom: 1em;">Category Picture</dt>
+                <img class="d-block" src="~/images/category@(Model.CategoryId).jpeg"/>
+            </div>
+        </dl>
+    </div>
+    <div>  
+        <dl class="dl-horizontal one">
+            <dt>Category Products</dt>
+            <dd>
+                @foreach (var product in Model.Products)
+                {
+                    <ul class="list-group cprod"> 
+                        <li class ="list-group-item cprod-sup mt-2">@product.ProductName Produced by: @product.Supplier.CompanyName</li>
+                    </ul>
+                }
+            </dd>
+        </dl>
+    </div>
 </div>

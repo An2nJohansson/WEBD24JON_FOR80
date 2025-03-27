@@ -6,7 +6,11 @@ html {
   html {
     font-size: 16px;
   }
+
+  
 }
+
+
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
@@ -36,6 +40,7 @@ body {
 
 .cprod-sup {
     background: #333333;
+    
 }
 
 .cprod:hover
@@ -44,3 +49,35 @@ body {
     transition: 0.4s;
 }
 
+.navbar {
+    background: #333333;
+}
+
+.footer {
+    background: #333333;
+}
+
+.c-pic img
+{
+    width: 25em;
+    border-radius: 25px;
+}
+
+.c-pic img:hover {
+    transform: scale(1.02);
+    transition: 0.4s;
+}
+
+.one {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+@media (max-width: 767px) {
+    .c-detail {
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: center;
+        align-items: center;
+    }
+}
