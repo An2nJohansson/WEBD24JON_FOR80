@@ -33,3 +33,14 @@ body {
 {
     column-count:3;
 }
+
+.cprod-sup {
+    background: #333333;
+}
+
+.cprod:hover
+{
+    transform: scale(1.02);
+    transition: 0.4s;
+}
+

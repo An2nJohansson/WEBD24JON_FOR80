@@ -87,6 +87,7 @@ namespace Northwind.Mvc.Controllers
             
             Category? model = db.Categories
                 .Include(c => c.Products)
+                .ThenInclude(p => p.Supplier)
                 .SingleOrDefault(p => p.CategoryId == id);
             if (model is null)
             {

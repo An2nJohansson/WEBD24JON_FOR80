@@ -19,8 +19,8 @@
         <dd>
             @foreach (var product in Model.Products)
             {
-                <ul class="list-group"> 
-                    <li class ="list-group-item mt-2">@product.ProductName</li>
+                <ul class="list-group cprod"> 
+                    <li class ="list-group-item cprod-sup mt-2">@product.ProductName Produced by: @product.Supplier.CompanyName</li>
                 </ul>
             }
         </dd>
